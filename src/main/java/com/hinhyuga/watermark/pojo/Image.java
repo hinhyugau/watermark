@@ -12,6 +12,13 @@ public class Image implements Serializable {
     private String name;
     private String width;
     private String height;
+    private String waterText;
+    private String waterTextColor;
+    private String waterTextBackground;
+    private String waterTextFont;
+    private String waterTextWidth;
+    private String waterTextHeight;
+    private String waterTextLocal;
     private String url;
     private String delFalg;
 
@@ -24,11 +31,18 @@ public class Image implements Serializable {
     public Image() {
     }
 
-    public Image(String id, String name, String width, String height, String url, String delFalg, Date createTime, Date updateTime) {
+    public Image(String id, String name, String width, String height, String waterText, String waterTextColor, String waterTextBackground, String waterTextFont, String waterTextWidth, String waterTextHeight, String waterTextLocal, String url, String delFalg, Date createTime, Date updateTime) {
         this.id = id;
         this.name = name;
         this.width = width;
         this.height = height;
+        this.waterText = waterText;
+        this.waterTextColor = waterTextColor;
+        this.waterTextBackground = waterTextBackground;
+        this.waterTextFont = waterTextFont;
+        this.waterTextWidth = waterTextWidth;
+        this.waterTextHeight = waterTextHeight;
+        this.waterTextLocal = waterTextLocal;
         this.url = url;
         this.delFalg = delFalg;
         this.createTime = createTime;
@@ -100,6 +114,62 @@ public class Image implements Serializable {
     }
 
 
+    public String getWaterText() {
+        return waterText;
+    }
+
+    public void setWaterText(String waterText) {
+        this.waterText = waterText;
+    }
+
+    public String getWaterTextColor() {
+        return waterTextColor;
+    }
+
+    public void setWaterTextColor(String waterTextColor) {
+        this.waterTextColor = waterTextColor;
+    }
+
+    public String getWaterTextBackground() {
+        return waterTextBackground;
+    }
+
+    public void setWaterTextBackground(String waterTextBackground) {
+        this.waterTextBackground = waterTextBackground;
+    }
+
+    public String getWaterTextFont() {
+        return waterTextFont;
+    }
+
+    public void setWaterTextFont(String waterTextFont) {
+        this.waterTextFont = waterTextFont;
+    }
+
+    public String getWaterTextWidth() {
+        return waterTextWidth;
+    }
+
+    public void setWaterTextWidth(String waterTextWidth) {
+        this.waterTextWidth = waterTextWidth;
+    }
+
+    public String getWaterTextHeight() {
+        return waterTextHeight;
+    }
+
+    public void setWaterTextHeight(String waterTextHeight) {
+        this.waterTextHeight = waterTextHeight;
+    }
+
+    public String getWaterTextLocal() {
+        return waterTextLocal;
+    }
+
+    public void setWaterTextLocal(String waterTextLocal) {
+        this.waterTextLocal = waterTextLocal;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -109,6 +179,13 @@ public class Image implements Serializable {
                 Objects.equals(name, image.name) &&
                 Objects.equals(width, image.width) &&
                 Objects.equals(height, image.height) &&
+                Objects.equals(waterText, image.waterText) &&
+                Objects.equals(waterTextColor, image.waterTextColor) &&
+                Objects.equals(waterTextBackground, image.waterTextBackground) &&
+                Objects.equals(waterTextFont, image.waterTextFont) &&
+                Objects.equals(waterTextWidth, image.waterTextWidth) &&
+                Objects.equals(waterTextHeight, image.waterTextHeight) &&
+                Objects.equals(waterTextLocal, image.waterTextLocal) &&
                 Objects.equals(url, image.url) &&
                 Objects.equals(delFalg, image.delFalg) &&
                 Objects.equals(createTime, image.createTime) &&
@@ -117,7 +194,7 @@ public class Image implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, width, height, url, delFalg, createTime, updateTime);
+        return Objects.hash(id, name, width, height, waterText, waterTextColor, waterTextBackground, waterTextFont, waterTextWidth, waterTextHeight, waterTextLocal, url, delFalg, createTime, updateTime);
     }
 
     @Override
@@ -127,6 +204,13 @@ public class Image implements Serializable {
                 ", name='" + name + '\'' +
                 ", width='" + width + '\'' +
                 ", height='" + height + '\'' +
+                ", waterText='" + waterText + '\'' +
+                ", waterTextColor='" + waterTextColor + '\'' +
+                ", waterTextBackground='" + waterTextBackground + '\'' +
+                ", waterTextFont='" + waterTextFont + '\'' +
+                ", waterTextWidth='" + waterTextWidth + '\'' +
+                ", waterTextHeight='" + waterTextHeight + '\'' +
+                ", waterTextLocal='" + waterTextLocal + '\'' +
                 ", url='" + url + '\'' +
                 ", delFalg='" + delFalg + '\'' +
                 ", createTime=" + createTime +
