@@ -17,13 +17,13 @@ public class FileUtils {
             byte[] bytes = new byte[fileInputStream.available()];
             fileInputStream.read(bytes);
             Image read = ImageIO.read(file);
-            int width = read.getWidth(null);//宽
-            int height = read.getHeight(null);//高
+            int width = read.getWidth(null);//image width
+            int height = read.getHeight(null);//image height
             BufferedImage bufferedImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics = bufferedImage.createGraphics();
             graphics.drawImage(read,0,0,width,height,null);
             graphics.setColor(Color.RED);
-            graphics.drawString("测试一个",50,50);
+            graphics.drawString("test",50,50);
             graphics.dispose();
             FileOutputStream fileOutputStream = new FileOutputStream("/Users/bryan/Desktop/bryan/io/meinv3.jpeg");
             ImageIO.write(bufferedImage,"jpeg",fileOutputStream);

@@ -19,8 +19,12 @@ public class Image implements Serializable {
     private String waterTextWidth;
     private String waterTextHeight;
     private String waterTextLocal;
+    private String suffix;
     private String url;
     private String delFalg;
+
+    public Image() {
+    }
 
 
 
@@ -28,10 +32,7 @@ public class Image implements Serializable {
 
     private Date updateTime;
 
-    public Image() {
-    }
-
-    public Image(String id, String name, String width, String height, String waterText, String waterTextColor, String waterTextBackground, String waterTextFont, String waterTextWidth, String waterTextHeight, String waterTextLocal, String url, String delFalg, Date createTime, Date updateTime) {
+    public Image(String id, String name, String width, String height, String waterText, String waterTextColor, String waterTextBackground, String waterTextFont, String waterTextWidth, String waterTextHeight, String waterTextLocal, String suffix, String url, String delFalg, Date createTime, Date updateTime) {
         this.id = id;
         this.name = name;
         this.width = width;
@@ -43,11 +44,15 @@ public class Image implements Serializable {
         this.waterTextWidth = waterTextWidth;
         this.waterTextHeight = waterTextHeight;
         this.waterTextLocal = waterTextLocal;
+        this.suffix = suffix;
         this.url = url;
         this.delFalg = delFalg;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
+
+
+
 
     public String getId() {
         return id;
@@ -170,6 +175,14 @@ public class Image implements Serializable {
         this.waterTextLocal = waterTextLocal;
     }
 
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -186,6 +199,7 @@ public class Image implements Serializable {
                 Objects.equals(waterTextWidth, image.waterTextWidth) &&
                 Objects.equals(waterTextHeight, image.waterTextHeight) &&
                 Objects.equals(waterTextLocal, image.waterTextLocal) &&
+                Objects.equals(suffix, image.suffix) &&
                 Objects.equals(url, image.url) &&
                 Objects.equals(delFalg, image.delFalg) &&
                 Objects.equals(createTime, image.createTime) &&
@@ -194,7 +208,7 @@ public class Image implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, width, height, waterText, waterTextColor, waterTextBackground, waterTextFont, waterTextWidth, waterTextHeight, waterTextLocal, url, delFalg, createTime, updateTime);
+        return Objects.hash(id, name, width, height, waterText, waterTextColor, waterTextBackground, waterTextFont, waterTextWidth, waterTextHeight, waterTextLocal, suffix, url, delFalg, createTime, updateTime);
     }
 
     @Override
@@ -211,6 +225,7 @@ public class Image implements Serializable {
                 ", waterTextWidth='" + waterTextWidth + '\'' +
                 ", waterTextHeight='" + waterTextHeight + '\'' +
                 ", waterTextLocal='" + waterTextLocal + '\'' +
+                ", suffix='" + suffix + '\'' +
                 ", url='" + url + '\'' +
                 ", delFalg='" + delFalg + '\'' +
                 ", createTime=" + createTime +
