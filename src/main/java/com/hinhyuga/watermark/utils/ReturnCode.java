@@ -1,8 +1,11 @@
 package com.hinhyuga.watermark.utils;
 
+/**
+ * return enum
+ */
 public enum ReturnCode {
-    SUCCESS(200,"获取成功！"),
-    FAILED(500,"服务器内部错误!");
+    SUCCESS(200,"get seccess！"),
+    FAILED(500,"service error!");
 
     private int key;
     private String value;

@@ -1,30 +1,40 @@
 package com.hinhyuga.watermark.web;
 
 import com.hinhyuga.watermark.pojo.Image;
+import com.hinhyuga.watermark.service.ImageService;
 import com.hinhyuga.watermark.utils.ReturnMsgUtil;
-import org.springframework.http.MediaType;
+import com.hinhyuga.watermark.utils.ServiceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 
 @RestController
 @RequestMapping("image")
 public class ImageController {
 
+    private Logger logger = LoggerFactory.getLogger(ImageController.class);
 
+    @Autowired
+    private ImageService imageService;
 
-    @RequestMapping(value = "imageOld")
+    @RequestMapping(value = "addImageWater")
     @ResponseBody
-    public ReturnMsgUtil postImage(@RequestParam("images") MultipartFile[] multipartFiles, Image image){
+    public ReturnMsgUtil postImage(@RequestParam("imagesSrc") MultipartFile[] multipartFiles,
+                                   @RequestParam("imageWater") MultipartFile multipartFile, Image image){
         ReturnMsgUtil returnMsgUtil = new ReturnMsgUtil();
+        logger.debug("start water");
+        try {
+            boolean falg = this.imageService.addImageWater(multipartFiles, multipartFile,image);
+        } catch (IOException e) {
+             new ServiceException("add water fail",e.getCause());
+        }
         return returnMsgUtil;
     }
 }
