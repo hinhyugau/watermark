@@ -4,15 +4,14 @@ import com.hinhyuga.watermark.pojo.Image;
 import com.hinhyuga.watermark.service.ImageService;
 import com.hinhyuga.watermark.utils.FileUtils;
 import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Position;
 import net.coobird.thumbnailator.geometry.Positions;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 @Service
@@ -22,9 +21,11 @@ public class ImageServiceImpl implements ImageService {
         BufferedImage BufferTar = ImageIO.read(fileTar.getInputStream());
         String waterTextLocal = image.getWaterTextLocal();
         Positions[] values = Positions.values();
-        String s = null;
+        String positionLoca = null;
         for (Positions value : values) {
-            s = value.toString();
+            if (StringUtils.isNotBlank(waterTextLocal) && waterTextLocal.equalsIgnoreCase(value.toString())){
+                positionLoca = value.toString();
+            }
         }
         for (MultipartFile file : files) {
             if (FileUtils.isImage(file.getOriginalFilename())){
@@ -32,7 +33,7 @@ public class ImageServiceImpl implements ImageService {
 
                 Thumbnails.of(imageBuffer)
                         .size(imageBuffer.getWidth(),imageBuffer.getHeight())
-                .watermark(Positions.valueOf(s),
+                .watermark(Positions.valueOf(positionLoca),
                         BufferTar
                         ,image.getTransp())
                         .toFile(new File("/Users/bryan/Desktop/bryan/io/meinv55.jpeg"));
