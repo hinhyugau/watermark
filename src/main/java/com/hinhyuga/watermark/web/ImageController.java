@@ -2,6 +2,7 @@ package com.hinhyuga.watermark.web;
 
 import com.hinhyuga.watermark.pojo.Image;
 import com.hinhyuga.watermark.service.ImageService;
+import com.hinhyuga.watermark.utils.ReturnCode;
 import com.hinhyuga.watermark.utils.ReturnMsgUtil;
 import com.hinhyuga.watermark.utils.ServiceException;
 import org.slf4j.Logger;
@@ -30,11 +31,16 @@ public class ImageController {
                                    @RequestParam("imageWater") MultipartFile multipartFile, Image image){
         ReturnMsgUtil returnMsgUtil = new ReturnMsgUtil();
         logger.debug("start water");
+
         try {
             boolean falg = this.imageService.addImageWater(multipartFiles, multipartFile,image);
-        } catch (IOException e) {
-             new ServiceException("add water fail",e.getCause());
+            returnMsgUtil.setMsg("add water success!");
+            returnMsgUtil.setCode(ReturnCode.SUCCESS.getValue());
+        } catch (ServiceException e) {
+            returnMsgUtil.setCode(ReturnCode.FAILED.getValue());
+            returnMsgUtil.setMsg("add water error!");
         }
+
         return returnMsgUtil;
     }
 }

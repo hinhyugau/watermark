@@ -21,20 +21,13 @@ public class Image implements Serializable {
     private String waterTextLocal;
     private String suffix;
     private String url;
-    private Long transp;
+    private Float transp;
     private String delFalg;
 
     public Image() {
     }
 
-
-
-    private Date createTime;
-
-    private Date updateTime;
-
-    public Image(String id, String name, String width, String height, String waterText, String waterTextColor, String waterTextBackground, String waterTextFont, String waterTextWidth, String waterTextHeight, String waterTextLocal, String suffix, String url, Long transp, String delFalg, Date createTime, Date updateTime) {
-        this.id = id;
+    public Image(String name, String width, String height, String waterText, String waterTextColor, String waterTextBackground, String waterTextFont, String waterTextWidth, String waterTextHeight, String waterTextLocal, String suffix, String url, Float transp, String delFalg, Date createTime, Date updateTime) {
         this.name = name;
         this.width = width;
         this.height = height;
@@ -52,6 +45,10 @@ public class Image implements Serializable {
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public String getId() {
         return id;
@@ -182,63 +179,11 @@ public class Image implements Serializable {
         this.suffix = suffix;
     }
 
-    public Long getTransp() {
+    public Float getTransp() {
         return transp;
     }
 
-    public void setTransp(Long transp) {
+    public void setTransp(Float transp) {
         this.transp = transp;
-    }
-
-    @Override
-    public String toString() {
-        return "Image{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", width='" + width + '\'' +
-                ", height='" + height + '\'' +
-                ", waterText='" + waterText + '\'' +
-                ", waterTextColor='" + waterTextColor + '\'' +
-                ", waterTextBackground='" + waterTextBackground + '\'' +
-                ", waterTextFont='" + waterTextFont + '\'' +
-                ", waterTextWidth='" + waterTextWidth + '\'' +
-                ", waterTextHeight='" + waterTextHeight + '\'' +
-                ", waterTextLocal='" + waterTextLocal + '\'' +
-                ", suffix='" + suffix + '\'' +
-                ", url='" + url + '\'' +
-                ", transp=" + transp +
-                ", delFalg='" + delFalg + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Image)) return false;
-        Image image = (Image) o;
-        return Objects.equals(id, image.id) &&
-                Objects.equals(name, image.name) &&
-                Objects.equals(width, image.width) &&
-                Objects.equals(height, image.height) &&
-                Objects.equals(waterText, image.waterText) &&
-                Objects.equals(waterTextColor, image.waterTextColor) &&
-                Objects.equals(waterTextBackground, image.waterTextBackground) &&
-                Objects.equals(waterTextFont, image.waterTextFont) &&
-                Objects.equals(waterTextWidth, image.waterTextWidth) &&
-                Objects.equals(waterTextHeight, image.waterTextHeight) &&
-                Objects.equals(waterTextLocal, image.waterTextLocal) &&
-                Objects.equals(suffix, image.suffix) &&
-                Objects.equals(url, image.url) &&
-                Objects.equals(transp, image.transp) &&
-                Objects.equals(delFalg, image.delFalg) &&
-                Objects.equals(createTime, image.createTime) &&
-                Objects.equals(updateTime, image.updateTime);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, width, height, waterText, waterTextColor, waterTextBackground, waterTextFont, waterTextWidth, waterTextHeight, waterTextLocal, suffix, url, transp, delFalg, createTime, updateTime);
     }
 }

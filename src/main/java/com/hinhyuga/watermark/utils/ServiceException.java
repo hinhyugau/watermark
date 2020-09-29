@@ -1,6 +1,6 @@
 package com.hinhyuga.watermark.utils;
 
-public class ServiceException extends Exception {
+public class ServiceException extends RuntimeException {
     public ServiceException() {
         super();
     }
