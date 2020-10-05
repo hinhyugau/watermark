@@ -5,5 +5,5 @@ import com.hinhyuga.watermark.utils.ServiceException;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ImageService {
-     boolean addImageWater(MultipartFile[] files, MultipartFile file,Image image) throws ServiceException;
+     boolean addImageWater(MultipartFile[] files,Image image) throws ServiceException;
 }

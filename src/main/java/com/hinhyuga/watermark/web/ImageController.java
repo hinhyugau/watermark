@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 
 @RestController
 @RequestMapping("image")
@@ -27,13 +26,11 @@ public class ImageController {
 
     @RequestMapping(value = "addImageWater")
     @ResponseBody
-    public ReturnMsgUtil postImage(@RequestParam("imagesSrc") MultipartFile[] multipartFiles,
-                                   @RequestParam("imageWater") MultipartFile multipartFile, Image image){
+    public ReturnMsgUtil postImage(@RequestParam("imagesSrc") MultipartFile[] multipartFiles,Image image){
         ReturnMsgUtil returnMsgUtil = new ReturnMsgUtil();
         logger.debug("start water");
-
         try {
-            boolean falg = this.imageService.addImageWater(multipartFiles, multipartFile,image);
+            boolean falg = this.imageService.addImageWater(multipartFiles, image);
             returnMsgUtil.setMsg("add water success!");
             returnMsgUtil.setCode(ReturnCode.SUCCESS.getValue());
         } catch (ServiceException e) {

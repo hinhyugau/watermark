@@ -18,9 +18,14 @@ import java.io.IOException;
 @Service
 public class ImageServiceImpl implements ImageService {
     @Override
-    public boolean addImageWater(MultipartFile[] files, MultipartFile fileTar,Image image){
+    public boolean addImageWater(MultipartFile[] files,Image image){
         try {
-            BufferedImage BufferTar = ImageIO.read(fileTar.getInputStream());
+            BufferedImage imageInputStreamText = null;
+            //if water text is not blank
+            if (StringUtils.isNotBlank(image.getWaterText())){
+                imageInputStreamText = FileUtils.geneTextImage(image.getWaterText(),image.getWaterTextColor());
+            }
+            BufferedImage BufferTar = imageInputStreamText;
             String waterTextLocal = image.getWaterTextLocal();
             Positions[] values = Positions.values();
             String positionLoca = null;
